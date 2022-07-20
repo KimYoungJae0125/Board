@@ -6,7 +6,17 @@
 </head>
 <body>
 
-<h1>test</h1>
+<h1 th:text="${title}"></h1>
+<table>
+    <thead>
+        <th>상품명</th>
+        <th>상품가격</th>
+    </thead>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.prodName}"></td>
+        <td th:text="${product.prodPrice}" style="text-align: right;"></td>
+    </tr>
+</table>
 
 </body>
 </html>
