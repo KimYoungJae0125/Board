@@ -8,8 +8,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Products {
-    private Long prod_id;
-    private String prod_name;
-    private Long prod_price;
+    private Long prodId;
+    private String prodName;
+    private Long prodPrice;
 
 }
