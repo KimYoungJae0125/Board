@@ -1,4 +1,4 @@
-package com.board.common.model.dto;
+package com.board.products.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

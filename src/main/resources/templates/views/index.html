@@ -7,16 +7,7 @@
 <body>
 
 <h1 th:text="${title}"></h1>
-<table>
-    <thead>
-        <th>상품명</th>
-        <th>상품가격</th>
-    </thead>
-    <tr th:each="product : ${products}">
-        <td th:text="${product.prodName}"></td>
-        <td th:text="${product.prodPrice}" style="text-align: right;"></td>
-    </tr>
-</table>
+<a href="/products">리스트 보기</a>
 
 </body>
 </html>

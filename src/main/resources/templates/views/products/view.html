@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 th:text="${title}"></h1>
+<div>
+
+    <div>
+        <span>상품명 : </span>
+        <span th:text="${product.prodName}"></span>
+    </div>
+    <div>
+        <span>상품금액 : </span>
+        <span th:text="${product.prodPrice}"></span>
+    </div>
+
+
+    <button onclick="location.href='/products'">목록으로</button>
+    <button>등록</button>
+    <button>삭제</button>
+</div>
+
+</body>
+</html>
