@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 th:text="${title}"></h1>
+<div>
+
+    <div>
+        <span>상품명 : </span>
+        <input id="productName" type="text">
+    </div>
+    <div>
+        <span>상품금액 : </span>
+        <input id="productPrice" type="text">
+    </div>
+
+
+    <button onclick="location.href='/products'">목록으로</button>
+    <button onclick="productWrite()">등록</button>
+</div>
+
+</body>
+
+<script src="/js/transfer.js"></script>
+<script>
+    function productWrite() {
+
+        const product = {
+              prodName : document.getElementById("productName").value
+            , prodPrice : document.getElementById("productPrice").value
+        }
+
+        Transfer.jsonRequest("/products", "post", JSON.stringify(product));
+    }
+</script>
+
+
+</html>

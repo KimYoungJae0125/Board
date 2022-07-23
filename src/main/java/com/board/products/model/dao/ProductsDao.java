@@ -10,9 +10,10 @@ import java.util.List;
 @Mapper
 public interface ProductsDao {
 
-    public List<Products> getProductList();
+    public List<Products> getProducts();
 
-    public Products getProduct(String prodId);
+    public Products viewProduct(String prodId);
 
 
+    void insertProduct(Products products);
 }

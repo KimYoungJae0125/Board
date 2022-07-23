@@ -5,8 +5,8 @@
 
 <mapper namespace="com.board.products.model.dao.ProductsDao">
 
-    <select id="getProductList" parameterType="Products" resultType="Products">
-        /* sqlId = com.board.products.model.dao.ProductsDao.getProductList */
+    <select id="getProducts" parameterType="Products" resultType="Products">
+        /* sqlId = com.board.products.model.dao.ProductsDao.getProducts */
 
         SELECT
         *
@@ -15,8 +15,8 @@
     </select>
 
 
-    <select id="getProduct" parameterType="String" resultType="Products">
-        /* sqlId = com.board.products.model.dao.ViewDao.getProduct */
+    <select id="viewProduct" parameterType="String" resultType="Products">
+        /* sqlId = com.board.products.model.dao.ViewDao.viewProduct */
 
         SELECT
         *
@@ -26,7 +26,7 @@
         PROD_ID = #{prodId}
     </select>
 
-    <insert id="addProduct" parameterType="Products">
+    <insert id="insertProduct" parameterType="Products">
         INSERT
         INTO
         PRODUCTS

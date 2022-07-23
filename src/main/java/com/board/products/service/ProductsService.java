@@ -13,12 +13,15 @@ public class ProductsService {
     @Autowired
     private ProductsDao productsDao;
 
-    public List<Products> getProductList() {
-        return productsDao.getProductList();
+    public List<Products> getProducts() {
+        return productsDao.getProducts();
     }
 
-    public Products getProduct(String prodId) {
-        return productsDao.getProduct(prodId);
+    public Products viewProduct(String prodId) {
+        return productsDao.viewProduct(prodId);
     }
 
+    public void insertProduct(Products products) {
+        productsDao.insertProduct(products);
+    }
 }
