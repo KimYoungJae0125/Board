@@ -23,7 +23,7 @@
         FROM
         PRODUCTS
         WHERE
-        PROD_ID = #{prodId}
+        ID = #{id}
     </select>
 
     <insert id="insertProduct" parameterType="Products">
@@ -31,13 +31,13 @@
         INTO
         PRODUCTS
         (
-          PROD_NAME
-        , PROD_PRICE
+          NAME
+        , PRICE
         )
         VALUES
         (
-          #{prodName}
-        , #{prodPrice}
+          #{name}
+        , #{price}
         )
     </insert>
 
@@ -46,7 +46,7 @@
         FROM
         PRODUCTS
         WHERE
-        PROD_ID = #{prodId}
+        ID = #{id}
     </delete>
 
 </mapper>
