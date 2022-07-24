@@ -1,18 +1,33 @@
 package com.board.products.controller;
 
-import com.board.products.model.dto.Products;
+import com.board.common.response.ResponseMessage;
+import com.board.products.model.dto.ProductsRequestDto;
+import com.board.products.model.validator.ProductsValidator;
 import com.board.products.service.ProductsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/products")
+@RequiredArgsConstructor
+@Slf4j
 public class ProductsController {
 
-    @Autowired
-    private ProductsService productsService;
+    private final ProductsService productsService;
+
+    private final ProductsValidator productsValidator;
+
+    @InitBinder("ProductsRequestDto")
+    public void addProductsValidator(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(productsValidator);
+    }
 
     @GetMapping
     public String getProducts(Model model) {
@@ -25,10 +40,12 @@ public class ProductsController {
 
     @PostMapping
     @ResponseBody
-    public void insertProduct(@RequestBody Products products) {
+    public ResponseEntity insertProduct(@RequestBody @Valid ProductsRequestDto ProductsRequestDto) {
 
-        productsService.insertProduct(products);
+        productsService.insertProduct(ProductsRequestDto);
 
+
+        return ResponseEntity.ok().body(ResponseMessage.OK(200, "", "", ProductsRequestDto));
     }
 
     @GetMapping("/view")
