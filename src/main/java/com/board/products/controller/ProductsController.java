@@ -24,7 +24,7 @@ public class ProductsController {
 
     private final ProductsValidator productsValidator;
 
-    @InitBinder("ProductsRequestDto")
+    @InitBinder("productsRequestDto")
     public void addProductsValidator(WebDataBinder webDataBinder) {
         webDataBinder.addValidators(productsValidator);
     }
