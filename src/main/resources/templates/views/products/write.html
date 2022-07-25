@@ -19,24 +19,15 @@
     </div>
 
 
-    <button onclick="location.href='/products'">목록으로</button>
+    <button onclick="goProductsList()">목록으로</button>
     <button onclick="productWrite()">등록</button>
 </div>
 
 </body>
+<!--<th:block th:replace="~{/fragments/products/staticProducts :: products}"></th:block>-->
 
 <script src="/js/transfer.js"></script>
-<script>
-    function productWrite() {
-
-        const product = {
-              prodName : document.getElementById("productName").value
-            , prodPrice : document.getElementById("productPrice").value
-        }
-
-        Transfer.jsonRequest("/products", "post", JSON.stringify(product));
-    }
-</script>
+<script src="/js/products/products.js"></script>
 
 
 </html>
