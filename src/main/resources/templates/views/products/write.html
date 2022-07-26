@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
-<h1 th:text="${title}"></h1>
-<div>
-
+<th:block layout:fragment="content">
+    <h1 th:text="${title}"></h1>
     <div>
-        <span>상품명 : </span>
-        <input id="productName" type="text">
-    </div>
-    <div>
-        <span>상품금액 : </span>
-        <input id="productPrice" type="text">
-    </div>
+
+        <div>
+            <span>상품명 : </span>
+            <input id="productName" type="text">
+        </div>
+        <div>
+            <span>상품금액 : </span>
+            <input id="productPrice" type="text">
+        </div>
 
 
-    <button onclick="goProductsList()">목록으로</button>
-    <button onclick="productWrite()">등록</button>
-</div>
+        <button onclick="goProductsList()">목록으로</button>
+        <button onclick="productWrite()">등록</button>
+    </div>
+</th:block>
 
 </body>
-<!--<th:block th:replace="~{/fragments/products/staticProducts :: products}"></th:block>-->
-
-<script src="/js/transfer.js"></script>
-<script src="/js/products/products.js"></script>
-
-
+<th:block layout:fragment="script">
+    <script src="/js/products/products.js"></script>
+</th:block>
 </html>

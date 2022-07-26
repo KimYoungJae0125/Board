@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
-<h1 th:text="${title}"></h1>
-<div>
-
+<th:block layout:fragment="content">
+    <h1 th:text="${title}"></h1>
     <div>
-        <span>상품명 : </span>
-        <span th:text="${product.prodName}"></span>
-    </div>
-    <div>
-        <span>상품금액 : </span>
-        <span th:text="${product.prodPrice}"></span>
-    </div>
+
+        <div>
+            <span>상품명 : </span>
+            <span th:text="${product.prodName}"></span>
+        </div>
+        <div>
+            <span>상품금액 : </span>
+            <span th:text="${product.prodPrice}"></span>
+        </div>
 
 
-    <button onclick="goProductsList()">목록으로</button>
-    <button onclick="goProductsWrite()">등록</button>
-    <button>삭제</button>
-</div>
+        <button onclick="goProductsList()">목록으로</button>
+        <button onclick="goProductsWrite()">등록</button>
+        <button>삭제</button>
+    </div>
+</th:block>
 
 </body>
-
-<script src="/js/products/products.js"></script>
-
+<th:block layout:fragment="script">
+    <script src="/js/products/products.js"></script>
+</th:block>
 
 </html>

@@ -1,55 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout}">
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        div {
-            width: 20%;
-        }
-        table {
-            border-collapse: collapse; /* 해당 속성이 있어야 tr 태그에 border 속성을 넣어줄 수 있음 */
-            margin-bottom: 10px;
-            width: 100%;
-        }
-        .tdtdtdtd {
-            border-bottom: 1px solid #070202;
-        }
-        td {
-            padding: 10px;
-        }
-        button {
-            float: right;
-        }
-        span.view:hover {
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        a {
-            color: black;
-            text-decoration: none;
-        }
-    </style>
+    <link href="/css/products/list.css" rel="stylesheet" />
 </head>
 <body>
-
-<h1 th:text="${title}"></h1>
-<div>
-    <table>
-        <thead>
-            <th>상품명</th>
-            <th>상품가격</th>
-        </thead>
-        <tr class="tdtdtdtd" th:each="product : ${products}">
-            <td><a th:href="@{/products/view(prodId=${product.prodId})}"><span class="view" th:text="${product.prodName}"></span></a></td>
-            <td th:text="${product.prodPrice}" style="text-align: right;"></td>
-        </tr>
-    </table>
-    <button onclick="goProductsWrite()">등록</button>
-    <button>삭제</button>
-</div>
+<th:block layout:fragment="content">
+    <h1 th:text="${title}"></h1>
+    <div class = "products-list-container">
+        <table class = "products-list-table">
+            <thead>
+                <th>상품명</th>
+                <th>상품가격</th>
+            </thead>
+            <tr th:each="product : ${products}">
+                <td><a th:href="@{/products/view(prodId=${product.prodId})}"><span th:text="${product.prodName}"></span></a></td>
+                <td th:text="${product.prodPrice}" style="text-align: right;"></td>
+            </tr>
+        </table>
+        <button onclick="goProductsWrite()">등록</button>
+        <button>삭제</button>
+    </div>
+</th:block>
 </body>
-
-<script src="/js/products/products.js"></script>
+<th:block layout:fragment="script">
+    <script src="/js/products/products.js"></script>
+</th:block>
 
 </html>
