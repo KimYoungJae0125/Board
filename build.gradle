@@ -28,6 +28,7 @@ dependencies {
 
 	/* thymeleaf : Template Engine */
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.0'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 
 	/* lombok */
 	compileOnly 'org.projectlombok:lombok:1.18.24'
