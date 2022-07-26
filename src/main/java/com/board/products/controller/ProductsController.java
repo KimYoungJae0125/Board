@@ -20,6 +20,8 @@ import javax.validation.Valid;
 @Slf4j
 public class ProductsController {
 
+    private final String TEMPLATE_PREFIX = "/views/products";
+
     private final ProductsService productsService;
 
     private final ProductsValidator productsValidator;
@@ -35,7 +37,7 @@ public class ProductsController {
         model.addAttribute("products", productsService.getProducts());
         model.addAttribute("title", "Thymeleaf Test");
 
-        return "/products/list";
+        return TEMPLATE_PREFIX + "/list";
     }
 
     @PostMapping
@@ -54,12 +56,12 @@ public class ProductsController {
         model.addAttribute("product", productsService.viewProduct(prodId));
         model.addAttribute("title", "Thymeleaf Test");
 
-        return "/products/view";
+        return TEMPLATE_PREFIX + "/view";
     }
     @GetMapping("/write")
     public String writeProduct() {
 
-        return "/products/write";
+        return TEMPLATE_PREFIX + "/write";
     }
 
 }
