@@ -27,7 +27,6 @@
 </th:block>
 
 </body>
-<th:block layout:fragment="script">
-    <script src="/js/products/products.js"></script>
-</th:block>
+
+<th:block layout:fragment="script" th:replace="~{/fragments/products/staticSources :: product-script}"></th:block>
 </html>

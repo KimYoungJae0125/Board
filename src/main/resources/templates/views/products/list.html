@@ -4,7 +4,7 @@
       layout:decorate="~{/layouts/layout}">
 <head>
     <title>Title</title>
-    <link href="/css/products/list.css" rel="stylesheet" />
+    <th:block th:replace="~{/fragments/products/staticSources :: product-css}"></th:block>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -17,7 +17,7 @@
             </thead>
             <tr th:each="product : ${products}">
                 <td><a th:href="@{/products/view(prodId=${product.prodId})}"><span th:text="${product.prodName}"></span></a></td>
-                <td th:text="${product.prodPrice}" style="text-align: right;"></td>
+                <td th:text="|${#numbers.formatInteger(product.prodPrice, 0, 'COMMA')}원|" style="text-align: right;"></td>
             </tr>
         </table>
         <button onclick="goProductsWrite()">등록</button>
@@ -25,8 +25,6 @@
     </div>
 </th:block>
 </body>
-<th:block layout:fragment="script">
-    <script src="/js/products/products.js"></script>
-</th:block>
+<th:block layout:fragment="script" th:replace="~{/fragments/products/staticSources :: product-script}"></th:block>
 
 </html>
