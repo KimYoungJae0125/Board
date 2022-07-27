@@ -1,8 +1,20 @@
 function productWrite() {
 
+    const prodName = String(document.getElementById("productName").value);
+
+    if(!checkProdName(prodName)) {
+        return false;
+    }
+
+    const prodPrice = Number(document.getElementById("productPrice").value);
+
+    if(!checkProdPrice(prodPrice)) {
+        return false;
+    }
+
     const product = {
-          "prodName" : String(document.getElementById("productName").value)
-        , "prodPrice" : Number(document.getElementById("productPrice").value)
+          "prodName" : prodName
+        , "prodPrice" : prodPrice
     }
 
     Transfer.jsonRequest("/products", "post", product);
