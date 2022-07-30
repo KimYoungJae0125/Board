@@ -9,8 +9,8 @@ import lombok.ToString;
 @ToString
 public class ProductsResponseDto {
 
-    private Long prodId;
-    private String prodName;
-    private Long prodPrice;
+    private Long id;
+    private String name;
+    private Long price;
 
 }

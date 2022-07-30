@@ -16,9 +16,9 @@ public interface ProductsMapper {
     @Mapping(target = "price", source = "prodPrice")
     Products dtoToEntity(ProductsRequestDto ProductsRequestDto);
 
-    @Mapping(target = "prodId", source = "id")
-    @Mapping(target = "prodName", source = "name")
-    @Mapping(target = "prodPrice", source = "price")
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "price", source = "price")
     ProductsResponseDto entityToDto(Products products);
     List<ProductsResponseDto> entityListToDtoList(List<Products> products);
 
