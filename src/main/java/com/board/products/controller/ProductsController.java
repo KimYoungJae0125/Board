@@ -40,6 +40,15 @@ public class ProductsController {
         return TEMPLATE_PREFIX + "/list";
     }
 
+    @GetMapping("/{prodId}")
+    public String viewProduct(Model model, @PathVariable String prodId) {
+
+        model.addAttribute("product", productsService.viewProduct(prodId));
+        model.addAttribute("title", "Thymeleaf Test");
+
+        return TEMPLATE_PREFIX + "/view";
+    }
+
     @PostMapping
     @ResponseBody
     public ResponseEntity insertProduct(@RequestBody @Valid ProductsRequestDto ProductsRequestDto) {
@@ -50,14 +59,7 @@ public class ProductsController {
         return ResponseEntity.ok().body(ResponseMessage.OK(200, "", "", ProductsRequestDto));
     }
 
-    @GetMapping("/view")
-    public String viewProduct(Model model, String prodId) {
 
-        model.addAttribute("product", productsService.viewProduct(prodId));
-        model.addAttribute("title", "Thymeleaf Test");
-
-        return TEMPLATE_PREFIX + "/view";
-    }
     @GetMapping("/write")
     public String writeProduct() {
 
