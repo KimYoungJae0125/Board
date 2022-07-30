@@ -12,7 +12,7 @@ public class MainController {
 
         model.addAttribute("title", "Thymeleaf Test");
 
-        return "/index";
+        return "/views/index";
     }
 
 }
