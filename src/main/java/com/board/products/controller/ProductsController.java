@@ -6,6 +6,7 @@ import com.board.products.model.validator.ProductsValidator;
 import com.board.products.service.ProductsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,7 +57,7 @@ public class ProductsController {
         productsService.insertProduct(ProductsRequestDto);
 
 
-        return ResponseEntity.ok().body(ResponseMessage.OK(200, "", "", ProductsRequestDto));
+        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 등록에 성공하셨습니다.", ProductsRequestDto));
     }
 
 
