@@ -3,5 +3,5 @@ function isNull(obj) {
 }
 
 function negativeNumber(val) {
-    return val < 0 || val == null || val == "";
+    return val < 0 || isNull(val);
 }
