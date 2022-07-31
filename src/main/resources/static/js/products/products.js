@@ -1,4 +1,4 @@
-function productWrite() {
+async function productWrite() {
 
     const prodName = String(document.getElementById("productName").value);
 
@@ -16,8 +16,17 @@ function productWrite() {
           "prodName" : prodName
         , "prodPrice" : prodPrice
     }
+    const responseData = await Transfer.Post("/products").Json(product);
 
-    Transfer.jsonRequest("/products", "post", product);
+    switch(responseData.statusCode) {
+        case 200 :
+            Messages.Transfer.Success(responseData);
+            goProductsList();
+        break;
+        case 400 :
+            Messages.Transfer.Fail(responseData);
+        break;
+    }
 }
 
 function goProductsList() {
