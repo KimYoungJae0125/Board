@@ -1,28 +1,23 @@
 const Transfer = {
-        ajax: function(requestUrl, httpMethod, contentType, requestData){
+      Get : function() {
 
-            fetch(requestUrl, {
-                  method: httpMethod
-                , headers: {
-                    "Content-Type" : contentType
-                  }
-                , body : requestData
-            })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.log("error : "+ error));
+      }
+    , Post : function(requestUrl) {
+        const option = {method : "POST"}
 
+        this.Json = function(requestData) {
+            option["headers"] = {"Content-Type" : "application/json"}
+            option["body"] = JSON.stringify(requestData);
+
+            return fetch(requestUrl, option).then(response => response.json());
         }
-      , jsonRequest: function(requestUrl, httpMethod, jsonData) {
-            Transfer.ajax(requestUrl, httpMethod, "application/json", JSON.stringify(jsonData));
-        }
-      , multipartRequest: function(requestUrl, httpMethod, fileData) {
-            const formData = new FormData();
-            formData.append("file", fileData);
-            formData.method="post";
-            formData.enctype = "multipart/form-data";
 
-            Transfer.ajax(requestUrl, "POST", "", formData);
-
-        }
+        return this;
+      }
+    , Put : function() {
+      }
+    , Patch : function() {
+      }
+    , Delete : function() {
+      }
 }
