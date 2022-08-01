@@ -16,7 +16,21 @@ async function productWrite() {
           "prodName" : prodName
         , "prodPrice" : prodPrice
     }
-    const responseData = await Transfer.Post("/products").Json(product);
+    const responseData = await Https.Post("/products").Json(product);
+
+    switch(responseData.statusCode) {
+        case 200 :
+            Messages.Transfer.Success(responseData);
+            goProductsList();
+        break;
+        case 400 :
+            Messages.Transfer.Fail(responseData);
+        break;
+    }
+}
+
+async function deleteProduct(prodId) {
+    const responseData = await Https.Delete("/products/" + prodId);
 
     switch(responseData.statusCode) {
         case 200 :
