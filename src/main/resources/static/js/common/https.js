@@ -1,4 +1,4 @@
-const Transfer = {
+const Https = {
       Get : function() {
 
       }
@@ -18,6 +18,10 @@ const Transfer = {
       }
     , Patch : function() {
       }
-    , Delete : function() {
+    , Delete : function(requestUrl) {
+        const option = {method : "DELETE"}
+
+        return fetch(requestUrl, option).then(response => response.json());
+
       }
 }
