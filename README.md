@@ -1,6 +1,20 @@
-## Template Engine
 
 ## Frontend
+
+### TypeScript
+- 인터프리터 언어인 JavaScript 와는 달리 컴파일 언어이다.
+- 확장자는 ```.ts``` 이며 컴파일을 할 경우 ```.js``` 파일로 변환된다. 
+- 정적 타입을 지원하기 때문에 컴파일 단계에서 오류를 확인 할 수 있다.
+#### 컴파일(```tsconfig.json``` 설정에 따름)
+```shell
+$ tsc
+```
+#### 파일이 변경되면 자동으로 컴파일
+```shell
+$ tsc -w
+```
+> ### Reference
+> https://typescript-kr.github.io/
 
 ### SCSS
 - CSS에서 변수 및 상속, 혼합, 중첩 등의 다양한 기능을 사용가능하게 해주는 전처리기   
@@ -11,6 +25,11 @@ $ sass --watch src/main/resources/static/scss/:src/main/resources/static/css
 ```
 - ```src/main/resources/static/scss``` : scss 파일이 있는 폴더 경로
 - ```:src/main/resources/static/css``` : scss 파일을 컴파일해서 생성할 폴더 경로
+> ### Reference
+> https://sass-guidelin.es/ko/
+
+
+## Template Engine
 
 ### thymeleaf
 - JSP와는 달리 HTML 기반으로 작동하며, th: 속성을 이용하여 동적 View를 이용 가능하게 해주는 Template Engine입니다.

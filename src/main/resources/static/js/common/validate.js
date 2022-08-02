@@ -1,7 +1,7 @@
-function isNull(obj) {
+const isNull = (obj) => {
     return obj == null || obj == "";
-}
-
-function negativeNumber(val) {
+};
+const negativeNumber = (val) => {
     return val < 0 || isNull(val);
-}
+};
+//# sourceMappingURL=validate.js.map
