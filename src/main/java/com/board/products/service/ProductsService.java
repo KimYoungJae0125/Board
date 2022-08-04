@@ -30,7 +30,7 @@ public class ProductsService {
         Products products = productsMapper.dtoToEntity(ProductsRequestDto);
 
         //MyBatis에서 insert 태그에 useGeneratedKeys="true" keyProperty="id" 설정을 할 경우 Auto_Increment(MySQL 기준)로 추가 된 id가 자동으로 model에 저장이 된다.
-        //해당 id를 불러오려면 model_클래스.getId()를 하면 된다(밑에 products.Dao.insertProduct(products)를 그대로 갖고 오면 1만 리턴해준다.
+        //해당 id를 불러오려면 model_클래스.getId()를 하면 된다.(밑에 products.Dao.insertProduct(products)의 리턴값은 새로 추가 된 행의 개수이기 때문에 id 값을 가져오지 못한다.)
         productsDao.insertProduct(products);
 
         return viewProduct(products.getId());
