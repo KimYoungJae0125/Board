@@ -19,6 +19,10 @@ $ tsc -w
 ### SCSS
 - CSS에서 변수 및 상속, 혼합, 중첩 등의 다양한 기능을 사용가능하게 해주는 전처리기   
 - Sass 3 버전부터 등장하였으며, Sass와는 달리 기존 CSS와 문법이 비슷하다.
+#### 컴파일
+```shell
+$ sass src/main/resources/static/scss/:src/main/resources/static/css
+```
 #### 파일이 변경되면 자동으로 컴파일
 ```shell
 $ sass --watch src/main/resources/static/scss/:src/main/resources/static/css
@@ -60,6 +64,9 @@ $ sass --watch src/main/resources/static/scss/:src/main/resources/static/css
 ### Spring Boot
 
 ### MyBatis
+
+> ### Reference
+> https://mybatis.org/mybatis-3/ko/sqlmap-xml.html
 
 ## Build Tool
 
