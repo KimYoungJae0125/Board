@@ -25,13 +25,6 @@ public class ProductsController {
 
     private final ProductsService productsService;
 
-    private final ProductsValidator productsValidator;
-
-    @InitBinder("productsRequestDto")
-    public void addProductsValidator(WebDataBinder webDataBinder) {
-        webDataBinder.addValidators(productsValidator);
-    }
-
     @GetMapping
     public String getProducts(Model model) {
 
@@ -50,21 +43,41 @@ public class ProductsController {
         return TEMPLATE_PREFIX + "/view";
     }
 
-    @PostMapping
-    @ResponseBody
-    public ResponseEntity insertProduct(@RequestBody @Valid ProductsRequestDto ProductsRequestDto) {
-
-        productsService.insertProduct(ProductsRequestDto);
-
-
-        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 등록에 성공하셨습니다.", ProductsRequestDto));
-    }
-
-
     @GetMapping("/write")
     public String writeProduct() {
 
         return TEMPLATE_PREFIX + "/write";
+    }
+
+    private final ProductsValidator productsValidator;
+
+    @InitBinder("productsRequestDto")
+    public void addProductsValidator(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(productsValidator);
+    }
+
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity insertProduct(@RequestBody @Valid ProductsRequestDto ProductsRequestDto) {
+        productsService.insertProduct(ProductsRequestDto);
+        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 등록에 성공하셨습니다.", ProductsRequestDto));
+    }
+    @DeleteMapping("/{prodId}")
+    @ResponseBody
+    public ResponseEntity deleteProduct(@PathVariable String prodId) {
+        productsService.deleteProduct(prodId);
+        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 삭제에 성공하셨습니다."));
+    }
+    @PatchMapping("/{prodId}")
+    @ResponseBody
+    public ResponseEntity updateProduct(@PathVariable String prodId) {
+        return null;
+    }
+
+    @PutMapping("/{prodId}")
+    @ResponseBody
+    public ResponseEntity updateAllProduct(@PathVariable String prodId) {
+        return null;
     }
 
 }
