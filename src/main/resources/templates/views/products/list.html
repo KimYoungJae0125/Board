@@ -14,10 +14,14 @@
             <thead>
                 <th>상품명</th>
                 <th>상품가격</th>
+                <th>작성자</th>
+                <th>등록일자</th>
             </thead>
             <tr th:each="product : ${products}">
                 <td><a th:href="@{/products/{prodId}(prodId=${product.id})}"><span th:text="${product.name}"></span></a></td>
                 <td th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}원|" style="text-align: right;"></td>
+                <td th:text="${product.writer}"></td>
+                <td th:text="${#temporals.format(product.creationTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
             </tr>
         </table>
         <button onclick="goProductsWrite()">등록</button>

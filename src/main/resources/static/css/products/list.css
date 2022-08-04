@@ -1,7 +1,6 @@
 @charset "UTF-8";
 .products-list-container {
-  width: 20%;
-  background-color: white;
+  width: 50%;
 }
 .products-list-container > table {
   border-collapse: collapse; /* 해당 속성이 있어야 tr 태그에 border 속성을 넣어줄 수 있음 */
