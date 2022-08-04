@@ -50,7 +50,7 @@
         )
     </insert>
 
-    <insert id="updateProduct" parameterType="Products">
+    <update id="updateProduct" parameterType="Products">
     /* set 태그를 이용시 마지막 ,를 자동으로 제거해준다. */
         UPDATE
         PRODUCTS
@@ -68,7 +68,7 @@
         WHERE
         Id = #{id}
 
-    </insert>
+    </update>
 
     <delete id="deleteProduct" parameterType="Long">
         DELETE
