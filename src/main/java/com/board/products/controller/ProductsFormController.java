@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @RequestMapping("/products")
 @RequiredArgsConstructor
 @Slf4j
-public class ProductsController {
+public class ProductsFormController {
 
     private final String TEMPLATE_PREFIX = "/views/products";
 
@@ -35,7 +35,7 @@ public class ProductsController {
     }
 
     @GetMapping("/{prodId}")
-    public String viewProduct(Model model, @PathVariable String prodId) {
+    public String viewProduct(Model model, @PathVariable Long prodId) {
 
         model.addAttribute("product", productsService.viewProduct(prodId));
         model.addAttribute("title", "Thymeleaf Test");
@@ -48,36 +48,4 @@ public class ProductsController {
 
         return TEMPLATE_PREFIX + "/write";
     }
-
-    private final ProductsValidator productsValidator;
-
-    @InitBinder("productsRequestDto")
-    public void addProductsValidator(WebDataBinder webDataBinder) {
-        webDataBinder.addValidators(productsValidator);
-    }
-
-    @PostMapping
-    @ResponseBody
-    public ResponseEntity insertProduct(@RequestBody @Valid ProductsRequestDto ProductsRequestDto) {
-        productsService.insertProduct(ProductsRequestDto);
-        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 등록에 성공하셨습니다.", ProductsRequestDto));
-    }
-    @DeleteMapping("/{prodId}")
-    @ResponseBody
-    public ResponseEntity deleteProduct(@PathVariable String prodId) {
-        productsService.deleteProduct(prodId);
-        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 삭제에 성공하셨습니다."));
-    }
-    @PatchMapping("/{prodId}")
-    @ResponseBody
-    public ResponseEntity updateProduct(@PathVariable String prodId) {
-        return null;
-    }
-
-    @PutMapping("/{prodId}")
-    @ResponseBody
-    public ResponseEntity updateAllProduct(@PathVariable String prodId) {
-        return null;
-    }
-
 }
