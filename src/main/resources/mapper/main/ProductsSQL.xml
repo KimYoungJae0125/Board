@@ -5,7 +5,7 @@
 
 <mapper namespace="com.board.products.model.dao.ProductsDao">
 
-    <select id="getProducts" parameterType="Products" resultType="Products">
+    <select id="findAll" parameterType="Products" resultType="Products">
         /* sqlId = com.board.products.model.dao.ProductsDao.getProducts */
 
         SELECT
@@ -15,7 +15,7 @@
     </select>
 
 
-    <select id="viewProduct" parameterType="Long" resultType="Products">
+    <select id="findById" parameterType="Long" resultType="Products">
         /* sqlId = com.board.products.model.dao.ViewDao.viewProduct */
 
         SELECT
@@ -26,7 +26,7 @@
         ID = #{id}
     </select>
 
-    <insert id="insertProduct" parameterType="Products" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="Products" useGeneratedKeys="true" keyProperty="id">
         /* iBatis에서는 Selectkey가 필수였지만 MyBatis에서는 필수는 아니다.
          * 다만 Auto_Increment를 사용하지 않고 다른 방법으로 id를 증가해서 해당 id를 반환해줘야하는 경우는 SelectKey 태그를 사용해야 한다.
          */
@@ -50,7 +50,7 @@
         )
     </insert>
 
-    <update id="updateProduct" parameterType="Products">
+    <update id="update" parameterType="Products">
     /* set 태그를 이용시 마지막 ,를 자동으로 제거해준다. */
         UPDATE
         PRODUCTS
@@ -70,7 +70,7 @@
 
     </update>
 
-    <delete id="deleteProduct" parameterType="Long">
+    <delete id="deleteById" parameterType="Long">
         DELETE
         FROM
         PRODUCTS

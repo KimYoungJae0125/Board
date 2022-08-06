@@ -1,9 +1,10 @@
 package com.board.products.model.entity;
 
-import lombok.*;
-import org.springframework.validation.annotation.Validated;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter

@@ -2,7 +2,6 @@ package com.board.products.model.dao;
 
 import com.board.products.model.entity.Products;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,14 +10,14 @@ import java.util.List;
 @Mapper
 public interface ProductsDao {
 
-    public List<Products> getProducts();
+    public List<Products> findAll();
 
-    public Products viewProduct(Long id);
+    public Products findById(Long id);
 
 
-    public Long insertProduct(Products products);
+    public Long save(Products products);
 
-    void deleteProduct(Long id);
+    void deleteById(Long id);
 
-    void updateProduct(Products productsRequestDto);
+    void update(Products products);
 }

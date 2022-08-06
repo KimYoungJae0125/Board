@@ -2,7 +2,8 @@ package com.board.products.model.dto;
 
 import lombok.*;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 
 @Getter
