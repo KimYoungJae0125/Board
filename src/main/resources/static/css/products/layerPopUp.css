@@ -1,0 +1,48 @@
+.layerPopUp {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.layerPopUp > div {
+  position: relative;
+  width: 40%;
+  height: auto;
+  min-height: 45%;
+  background-color: white;
+  box-shadow: 0px 0px 10px;
+  padding: 20px;
+}
+.layerPopUp > div > input {
+  width: 95%;
+  height: 30px;
+  border-radius: 6px;
+}
+.layerPopUp > div > input:nth-of-type(3) {
+  height: 200px;
+}
+.layerPopUp > div > div {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 95%;
+  min-height: 100%;
+  padding-bottom: 10px;
+}
+.layerPopUp > div > div > button {
+  color: white;
+  width: 100px;
+  height: 40px;
+  margin-top: 15px;
+  margin-left: 15px;
+  background-color: rgb(178, 209, 249);
+  border-radius: 5px;
+}
+.layerPopUp > div > div > button:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=layerPopUp.css.map */
