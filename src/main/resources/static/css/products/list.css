@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .products-list-container {
-  width: 50%;
+  width: 100%;
 }
 .products-list-container > table {
   border-collapse: collapse; /* 해당 속성이 있어야 tr 태그에 border 속성을 넣어줄 수 있음 */
@@ -10,16 +10,27 @@
 .products-list-container > table tr {
   border-bottom: 1px solid #070202;
 }
+.products-list-container > table tr:nth-of-type(2n) {
+  background-color: grey;
+}
 .products-list-container > table td {
   padding: 10px;
+}
+.products-list-container > table td:nth-of-type(1) {
+  margin-left: 10px;
+}
+.products-list-container > table td:nth-of-type(2) {
+  text-align: right;
+}
+.products-list-container > table td:nth-of-type(3) {
+  text-align: center;
+}
+.products-list-container > table td:nth-of-type(4) {
+  text-align: center;
 }
 .products-list-container > table span:hover {
   text-decoration: underline;
   cursor: pointer;
-}
-.products-list-container > table a {
-  color: black;
-  text-decoration: none;
 }
 .products-list-container > button {
   float: right;
