@@ -1,48 +1,102 @@
-const productWrite = async () => {
-    const product = {};
-    const productNameElement = document.getElementById("productName");
-    //narrowing : type 검사 등을 통해 조건을 좁혀 특정 행동을 할 수 있게 해주는 것
-    if (productNameElement instanceof HTMLInputElement) {
-        product["prodName"] = String(productNameElement.value);
+const Products = {
+    Move: {
+        List: () => {
+            location.href = "/products";
+        }
+    },
+    LayerPopUp: {
+        Open: (layerFlag) => {
+            const layerPopUpContainer = document.createElement("div");
+            layerPopUpContainer.className = "layerPopUp";
+            const layerPopUp = [];
+            layerPopUp.push("<div>");
+            ProductFragments.Elements.Create.Writer(layerPopUp, layerFlag);
+            ProductFragments.Elements.Create.Name(layerPopUp, layerFlag);
+            ProductFragments.Elements.Create.Price(layerPopUp, layerFlag);
+            ProductFragments.Elements.Create.Content(layerPopUp, layerFlag);
+            ProductFragments.Elements.Create.Button(layerPopUp, layerFlag);
+            layerPopUp.push("</div>");
+            document.body.append(layerPopUpContainer);
+            layerPopUpContainer.innerHTML = layerPopUp.join('');
+        },
+        Close: (e) => {
+            e.parentNode.parentNode.parentNode.remove();
+        }
+    },
+    Data: {
+        Insert: async () => {
+            const product = {};
+            const productNameElement = document.getElementById("productName");
+            //narrowing : type 검사 등을 통해 조건을 좁혀 특정 행동을 할 수 있게 해주는 것
+            if (productNameElement instanceof HTMLInputElement) {
+                product["productName"] = String(productNameElement.value);
+            }
+            if (!checkProdName(product["productName"])) {
+                return false;
+            }
+            const productPriceElement = document.getElementById("productPrice");
+            if (productPriceElement instanceof HTMLInputElement) {
+                product["productPrice"] = Number(productPriceElement.value);
+            }
+            if (!checkProdPrice(product["productPrice"])) {
+                return false;
+            }
+            const productContentElement = document.getElementById("productContent");
+            if (productContentElement instanceof HTMLInputElement) {
+                product["productContent"] = String(productContentElement.value);
+            }
+            product["productWriter"] = "admin";
+            const responseData = await Https.Post("/products").Json(product);
+            switch (responseData.statusCode) {
+                case 200:
+                    Messages.Https.Success(responseData);
+                    Products.Move.List();
+                    break;
+                case 400:
+                    Messages.Https.Fail(responseData);
+                    break;
+            }
+        },
+        Delete: async (prodId) => {
+            const responseData = await Https.Delete("/products/" + prodId);
+            switch (responseData.statusCode) {
+                case 200:
+                    Messages.Https.Success(responseData);
+                    Products.Move.List();
+                    break;
+                case 400:
+                    Messages.Https.Fail(responseData);
+                    break;
+            }
+        },
+        View: async (productId) => {
+            const responseData = await Https.Get("/products/" + productId);
+            switch (responseData.statusCode) {
+                case 200:
+                    Messages.Https.Success(responseData);
+                    Products.LayerPopUp.Open(false);
+                    const productWriter = document.getElementById("productWriter");
+                    if (productWriter instanceof HTMLElement) {
+                        productWriter.innerHTML = responseData.data.writer;
+                    }
+                    const productName = document.getElementById("productName");
+                    if (productName instanceof HTMLElement) {
+                        productName.innerHTML = responseData.data.name;
+                    }
+                    const productPrice = document.getElementById("productPrice");
+                    if (productPrice instanceof HTMLElement) {
+                        productPrice.innerHTML = responseData.data.price;
+                    }
+                    const productContent = document.getElementById("productContent");
+                    if (productContent instanceof HTMLElement) {
+                        productContent.innerHTML = responseData.data.content;
+                    }
+                    break;
+                case 400:
+                    Messages.Https.Fail(responseData);
+                    break;
+            }
+        }
     }
-    if (!checkProdName(product["prodName"])) {
-        return false;
-    }
-    const productPriceElement = document.getElementById("productPrice");
-    let productPrice;
-    if (productPriceElement instanceof HTMLInputElement) {
-        product["prodPrice"] = Number(productPriceElement.value);
-    }
-    if (!checkProdPrice(product["prodPrice"])) {
-        return false;
-    }
-    const responseData = await Https.Post("/products").Json(product);
-    switch (responseData.statusCode) {
-        case 200:
-            Messages.Https.Success(responseData);
-            goProductsList();
-            break;
-        case 400:
-            Messages.Https.Fail(responseData);
-            break;
-    }
-};
-const deleteProduct = async (prodId) => {
-    const responseData = await Https.Delete("/products/" + prodId);
-    switch (responseData.statusCode) {
-        case 200:
-            Messages.Https.Success(responseData);
-            goProductsList();
-            break;
-        case 400:
-            Messages.Https.Fail(responseData);
-            break;
-    }
-};
-const goProductsList = () => {
-    location.href = "/products";
-};
-const goProductsWrite = () => {
-    location.href = "/products/write";
 };
 //# sourceMappingURL=products.js.map
