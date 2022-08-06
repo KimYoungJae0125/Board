@@ -6,10 +6,7 @@ import com.board.products.model.validator.ProductsValidator;
 import com.board.products.service.ProductsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,25 +26,29 @@ public class ProductsRestController {
         webDataBinder.addValidators(productsValidator);
     }
 
+    @GetMapping("/{productId}")
+    public ResponseEntity findProduct(@PathVariable Long productId) {
+
+        return ResponseMessage.SUCCESS("상품 조회에 성공하였습니다.", productsService.findProduct(productId));
+    }
+
     @PostMapping
     public ResponseEntity insertProduct(@RequestBody @Valid ProductsRequestDto productsRequestDto) {
-        productsService.insertProduct(productsRequestDto);
-        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 등록에 성공하셨습니다.", productsRequestDto));
+        return ResponseMessage.SUCCESS("상품 등록에 성공하였습니다.", productsService.insertProduct(productsRequestDto));
     }
-    @DeleteMapping("/{prodId}")
-    public ResponseEntity deleteProduct(@PathVariable Long prodId) {
-        productsService.deleteProduct(prodId);
-        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 삭제에 성공하셨습니다."));
+    @DeleteMapping("/{productId}")
+    public ResponseEntity deleteProduct(@PathVariable Long productId) {
+        productsService.deleteProduct(productId);
+        return ResponseMessage.SUCCESS("상품 삭제에 성공하였습니다.");
     }
-    @PatchMapping("/{prodId}")
-    public ResponseEntity updateProduct(@PathVariable Long prodId, @RequestBody ProductsRequestDto productsRequestDto) {
-        productsRequestDto.setProductId(prodId);
-
-        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), "상품 정보 수정에 성공하셨습니다.", productsService.updateProduct(productsRequestDto)));
+    @PatchMapping("/{productId}")
+    public ResponseEntity updateProduct(@PathVariable Long productId, @RequestBody ProductsRequestDto productsRequestDto) {
+        productsRequestDto.setProductId(productId);
+        return ResponseMessage.SUCCESS("상품 정보 수정에 성공하였습니다.", productsService.updateProduct(productsRequestDto));
     }
 
-    @PutMapping("/{prodId}")
-    public ResponseEntity updateAllProduct(@PathVariable String prodId) {
+    @PutMapping("/{productId}")
+    public ResponseEntity updateAllProduct(@PathVariable String productId) {
         return null;
     }
 
