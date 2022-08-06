@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
@@ -97,6 +99,13 @@ public class ResponseMessage<T> {
                 .data(data)
                 .build();
     }
+    public static ResponseEntity SUCCESS(String message) {
+        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), message));
+    }
+    public static <T> ResponseEntity<ResponseMessage<T>> SUCCESS(String message, T data) {
+        return ResponseEntity.ok().body(ResponseMessage.OK(200, HttpStatus.OK.getReasonPhrase(), message, data));
+    }
+
 
 
 }
