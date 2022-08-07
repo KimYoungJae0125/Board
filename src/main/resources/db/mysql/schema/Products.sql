@@ -6,7 +6,7 @@ CREATE TABLE Products
   , name          VARCHAR(255)    NOT NULL
   , price         INT             NOT NULL
   , content       VARCHAR(4000)
-  , writer        VARCHAR(10)
   , creation_time TIMESTAMP
+  , user_id       BIGINT
   , PRIMARY KEY(id)
 );
