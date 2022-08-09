@@ -1,5 +1,6 @@
 package com.board.products.model.dto;
 
+import com.board.users.model.dto.UsersRequestDto;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -21,7 +22,7 @@ public class ProductsRequestDto {
 
     private String productContent;
 
-    private String productWriter;
+    private UsersRequestDto productWriter;
 
     private LocalDateTime productCreationTime;
 

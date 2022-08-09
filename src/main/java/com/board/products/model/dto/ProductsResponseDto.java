@@ -1,5 +1,6 @@
 package com.board.products.model.dto;
 
+import com.board.users.model.dto.UsersResponseDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,7 +16,7 @@ public class ProductsResponseDto {
     private String name;
     private Long price;
     private String content;
-    private String writer;
+    private UsersResponseDto writer;
     private LocalDateTime creationTime;
 
 }
