@@ -32,6 +32,7 @@ $ sass --watch src/main/resources/static/scss/:src/main/resources/static/css
 > ### Reference
 > https://sass-guidelin.es/ko/
 
+<br>
 
 ## Template Engine
 
@@ -53,21 +54,51 @@ $ sass --watch src/main/resources/static/scss/:src/main/resources/static/css
 > ### Reference
 > https://github.com/ultraq/thymeleaf-layout-dialect
 
+<br>
 
 ## Backend
 
-### adpotJdk11
+### Java
+> ### JDK
+> adpotJdk11
 
+
+<br>
 
 ## Framework
 
 ### Spring Boot
 
+> ### Reference
+> https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+
 ### MyBatis
 
 > ### Reference
 > https://mybatis.org/mybatis-3/ko/sqlmap-xml.html
+> https://kgmyh.github.io/blog/2017/12/22/Mybatis-SpringBoot/
+
+<br>
+
+## DataBase
+
+### H2
+Mode : MySQL
+
+> ### Reference
+> http://h2database.com/html/features.html
+
+<br>
 
 ## Build Tool
 
 ### Gradle
+
+## Library
+
+### MapStruct
+
+- Entity와 dto 간의 매핑을 편리하게 해주는 라이브러리
+
+> Reference
+> https://mapstruct.org/documentation/stable/reference/html
