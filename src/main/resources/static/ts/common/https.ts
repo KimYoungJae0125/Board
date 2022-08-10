@@ -23,7 +23,7 @@ const Https :httpMethod = {
 
           return fetch(requestUrl, option).then(response => response.json());
       }
-    , Post : function(requestUrl :string) :Function {
+    , Post(requestUrl :string) :Function {
         const option = {method : "POST"}
 
         this.Json = (requestData :object) :Promise<response> => {
