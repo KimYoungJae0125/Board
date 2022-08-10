@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/css/common.css" rel="stylesheet" />
+
 </head>
 <body>
     <header th:replace="~{/fragments/common/header :: fragment-header}"></header>
 
-    <th:block layout:fragment="content"></th:block>
+    <section>
+        <th:block layout:fragment="content"></th:block>
+    </section>
 
     <footer th:replace="~{/fragments/common/footer :: fragment-footer}"></footer>
 

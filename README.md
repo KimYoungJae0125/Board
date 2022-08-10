@@ -3,7 +3,7 @@
 
 ### TypeScript
 - 인터프리터 언어인 JavaScript 와는 달리 컴파일 언어이다.
-- 확장자는 ```.ts``` 이며 컴파일을 할 경우 ```.js``` 파일로 변환된다. 
+- 확장자는 ```.ts``` 이며 컴파일을 할 경우 ```.js``` 파일로 변환된다.
 - 정적 타입을 지원하기 때문에 컴파일 단계에서 오류를 확인 할 수 있다.
 #### 컴파일(```tsconfig.json``` 설정에 따름)
 ```shell
@@ -17,7 +17,7 @@ $ tsc -w
 > https://typescript-kr.github.io/
 
 ### SCSS
-- CSS에서 변수 및 상속, 혼합, 중첩 등의 다양한 기능을 사용가능하게 해주는 전처리기   
+- CSS에서 변수 및 상속, 혼합, 중첩 등의 다양한 기능을 사용가능하게 해주는 전처리기
 - Sass 3 버전부터 등장하였으며, Sass와는 달리 기존 CSS와 문법이 비슷하다.
 #### 컴파일
 ```shell
@@ -32,6 +32,7 @@ $ sass --watch src/main/resources/static/scss/:src/main/resources/static/css
 > ### Reference
 > https://sass-guidelin.es/ko/
 
+<br>
 
 ## Template Engine
 
@@ -53,21 +54,51 @@ $ sass --watch src/main/resources/static/scss/:src/main/resources/static/css
 > ### Reference
 > https://github.com/ultraq/thymeleaf-layout-dialect
 
+<br>
 
 ## Backend
 
-### adpotJdk11
+### Java
+> ### JDK
+> adpotJdk11
 
+
+<br>
 
 ## Framework
 
 ### Spring Boot
 
+> ### Reference
+> https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/
+
 ### MyBatis
 
 > ### Reference
 > https://mybatis.org/mybatis-3/ko/sqlmap-xml.html
+> https://kgmyh.github.io/blog/2017/12/22/Mybatis-SpringBoot/
+
+<br>
+
+## DataBase
+
+### H2
+Mode : MySQL
+
+> ### Reference
+> http://h2database.com/html/features.html
+
+<br>
 
 ## Build Tool
 
 ### Gradle
+
+## Library
+
+### MapStruct
+
+- Entity와 dto 간의 매핑을 편리하게 해주는 라이브러리
+
+> Reference
+> https://mapstruct.org/documentation/stable/reference/html

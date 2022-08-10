@@ -45,57 +45,71 @@ const Products = {
             if (productContentElement instanceof HTMLInputElement) {
                 product["productContent"] = String(productContentElement.value);
             }
-            product["productWriter"] = "admin";
+            //TODO 하드코딩이 아닌 토큰 또는 세션에서 불러오는 값으로 변경 예정
+            product["productWriter"] = { userId: 1 };
             const responseData = await Https.Post("/products").Json(product);
-            switch (responseData.statusCode) {
-                case 200:
-                    Messages.Https.Success(responseData);
-                    Products.Move.List();
-                    break;
-                case 400:
-                    Messages.Https.Fail(responseData);
-                    break;
-            }
+            productResponse(responseData, "Post");
         },
         Delete: async (prodId) => {
             const responseData = await Https.Delete("/products/" + prodId);
-            switch (responseData.statusCode) {
-                case 200:
-                    Messages.Https.Success(responseData);
-                    Products.Move.List();
-                    break;
-                case 400:
-                    Messages.Https.Fail(responseData);
-                    break;
-            }
+            productResponse(responseData, "Delete");
         },
         View: async (productId) => {
             const responseData = await Https.Get("/products/" + productId);
-            switch (responseData.statusCode) {
-                case 200:
-                    Messages.Https.Success(responseData);
-                    Products.LayerPopUp.Open(false);
-                    const productWriter = document.getElementById("productWriter");
-                    if (productWriter instanceof HTMLElement) {
-                        productWriter.innerHTML = responseData.data.writer;
-                    }
-                    const productName = document.getElementById("productName");
-                    if (productName instanceof HTMLElement) {
-                        productName.innerHTML = responseData.data.name;
-                    }
-                    const productPrice = document.getElementById("productPrice");
-                    if (productPrice instanceof HTMLElement) {
-                        productPrice.innerHTML = responseData.data.price;
-                    }
-                    const productContent = document.getElementById("productContent");
-                    if (productContent instanceof HTMLElement) {
-                        productContent.innerHTML = responseData.data.content;
-                    }
-                    break;
-                case 400:
-                    Messages.Https.Fail(responseData);
-                    break;
+            productResponse(responseData, "Get");
+        }
+    }
+};
+const productResponse = (responseData, httpMethod) => {
+    switch (responseData.statusCode) {
+        case 200:
+            productsHttp[httpMethod].Success(responseData);
+        case 400:
+            productsHttp[httpMethod].Fail(responseData);
+    }
+};
+const productsHttp = {
+    Get: {
+        Success: (responseData) => {
+            Messages.Https.Success(responseData);
+            Products.LayerPopUp.Open(false);
+            const productWriter = document.getElementById("productWriter");
+            if (productWriter instanceof HTMLElement) {
+                productWriter.innerHTML = responseData.data.writer.name;
             }
+            const productName = document.getElementById("productName");
+            if (productName instanceof HTMLElement) {
+                productName.innerHTML = responseData.data.name;
+            }
+            const productPrice = document.getElementById("productPrice");
+            if (productPrice instanceof HTMLElement) {
+                productPrice.innerHTML = responseData.data.price;
+            }
+            const productContent = document.getElementById("productContent");
+            if (productContent instanceof HTMLElement) {
+                productContent.innerHTML = responseData.data.content;
+            }
+        },
+        Fail: (responseData) => {
+            Messages.Https.Fail(responseData);
+        }
+    },
+    Post: {
+        Success: (responseData) => {
+            Messages.Https.Success(responseData);
+            Products.Move.List();
+        },
+        Fail: (responseData) => {
+            Messages.Https.Fail(responseData);
+        }
+    },
+    Delete: {
+        Success: (responseData) => {
+            Messages.Https.Success(responseData);
+            Products.Move.List();
+        },
+        Fail: (responseData) => {
+            Messages.Https.Fail(responseData);
         }
     }
 };

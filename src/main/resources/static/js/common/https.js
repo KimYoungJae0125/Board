@@ -4,7 +4,7 @@ const Https = {
         const option = { method: "GET" };
         return fetch(requestUrl, option).then(response => response.json());
     },
-    Post: function (requestUrl) {
+    Post(requestUrl) {
         const option = { method: "POST" };
         this.Json = (requestData) => {
             option["headers"] = { "Content-Type": "application/json" };

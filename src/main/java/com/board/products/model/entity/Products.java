@@ -1,5 +1,6 @@
 package com.board.products.model.entity;
 
+import com.board.users.model.entity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +16,7 @@ public class Products {
     private String name;
     private Long price;
     private String content;
-    private String writer;
+    private Users users;
     private LocalDateTime creationTime;
 
 }

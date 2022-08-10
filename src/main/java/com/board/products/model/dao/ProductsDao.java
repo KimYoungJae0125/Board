@@ -10,12 +10,12 @@ import java.util.List;
 @Mapper
 public interface ProductsDao {
 
-    public List<Products> findAll();
+    List<Products> findAll();
 
-    public Products findById(Long id);
+    Products findById(Long id);
 
 
-    public Long save(Products products);
+    Long save(Products products);
 
     void deleteById(Long id);
 
