@@ -20,22 +20,28 @@ repositories {
 
 dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
-	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.7.3'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.3'
+
+	/* AOP */
+	implementation 'org.springframework.boot:spring-boot-starter-aop:2.7.3'
+	testImplementation 'org.springframework.boot:spring-boot-starter-aop:2.7.3'
 
 	/* validation 관련 어노테이션 */
-	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.3'
 
 	/* thymeleaf : Template Engine */
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.0'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.3'
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 
 	/* lombok */
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+	testCompileOnly 'org.projectlombok:lombok:1.18.24'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 
 	/* H2 : InMemory DB */
-	runtimeOnly 'com.h2database:h2:2.1.212'
+	runtimeOnly 'com.h2database:h2:2.1.214'
 
 	/* log4jbc : SQL log */
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
@@ -46,7 +52,15 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.5.2.Final'
 
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
-	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.1.Final'
+	testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+
+	/*
+	 * e2e 테스트를 위한 컨테이너
+	 * cypress
+	 */
+	implementation(platform("org.testcontainers:testcontainers-bom:1.16.0"))
+	testImplementation 'org.testcontainers:testcontainers:1.17.3'
+
 }
 
 tasks.named('test') {
